@@ -1,0 +1,48 @@
+<form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+    <div class="container rounded bg-white mt-5 mb-5">
+      <div class="row">
+        <!-- User Profile Section -->
+        <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+            <span class="font-weight-bold">{{ profileForm.value.username || 'User' }}</span>
+            <span class="text-black-50">{{ profileForm.value.email || 'email@example.com' }}</span>
+          </div>
+        </div>
+<!--         test -->
+        <!-- Profile Settings Form -->
+        <div class="col-md-9">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">Profile</h4>
+            </div>
+            <div class="row mt-2">
+              <!-- Name Field -->
+              <div class="col-md-6">
+                <label class="labels">Name</label>
+                <input type="text" class="form-control" placeholder="Enter name" formControlName="username">
+              </div>
+              <!-- Email Field -->
+              <div class="col-md-6">
+                <label class="labels">Email</label>
+                <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
+              </div>
+            </div>
+            <div class="row mt-3">
+              <!-- Password Field -->
+              <div class="col-md-12">
+                <label class="labels">Password</label>
+                <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
+              </div>
+            </div>
+
+            <!-- Buttons for Update and Delete -->
+            <div class="mt-5 text-center">
+              <button class="btn btn-primary profile-button" type="submit">Update Profile</button>
+              <button class="btn btn-danger profile-button" (click)="deleteProfile()">Delete Profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>

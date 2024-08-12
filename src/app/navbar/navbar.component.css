@@ -1,0 +1,26 @@
+/* src/styles.css */
+
+/* Ensure the navbar expands correctly */
+.navbar {
+    margin-bottom: 20px; /* Add margin below the navbar */
+  }
+  
+  /* Adjust the background color of the navbar */
+  .navbar-light {
+    background-color: #f8f9fa; /* Light background color */
+  }
+  
+  /* Adjust the color of the brand name */
+  .navbar-brand {
+    font-weight: bold; /* Make the brand name bold */
+  }
+  
+  /* Adjust the search form */
+  .form-control {
+    border-radius: 0; /* Remove border-radius for a flat look */
+  }
+  
+  .btn-outline-success {
+    border-radius: 0; /* Remove border-radius for a flat look */
+  }
+  
