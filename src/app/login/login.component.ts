@@ -19,11 +19,13 @@ export class LoginComponent {
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe(
       response => {
-        // Handle successful login
+       //Store the token in localStorage
         localStorage.setItem('token', response.jwt); 
         console.log(response);
+        //Load the user from the token to update userSubject
         this.authService.loadUserFromLocalStorage();
-        this.router.navigate(['/profil']); // Redirect after login
+        this.router.navigate(['/profil']); 
+        //Redirect after login
       },
       error => {
         // Handle error

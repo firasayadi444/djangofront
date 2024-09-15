@@ -1,0 +1,38 @@
+<div class="container">
+    <h3>Text Prompt</h3>
+  
+    <textarea
+      name="textPrompt"
+      [(ngModel)]="prompt"
+      class="text-input"
+      id="text-prompt"
+      placeholder="Describe what you want the AI to create..."
+      required
+      minlength="3"
+      maxlength="2000">
+    </textarea>
+  
+    <div *ngIf="Gen_butt">
+      <div class="flex-row">
+        <button (click)="generate()" class="btn-generate" [disabled]="isLoading">
+          <b>Generate</b>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Show a loading spinner or message while waiting -->
+    <div *ngIf="isLoading" class="loading-indicator">
+      <p>Generating image, please wait...</p>
+      <!-- Add a spinner or loading animation here -->
+      <div class="lds-spinner">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="img-section">
+    <div class="img-wrapper">
+      <img *ngIf="imageUrl" [src]="imageUrl" alt="Generated Image" />
+    </div>
+  </div>
+  

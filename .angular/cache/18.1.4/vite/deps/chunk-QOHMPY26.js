@@ -1,6 +1,6 @@
 import {
   DOCUMENT
-} from "./chunk-6YORC5TW.js";
+} from "./chunk-KMOPM5UX.js";
 import {
   Directive,
   ElementRef,
@@ -21,7 +21,7 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-PA2HYQL4.js";
+} from "./chunk-AEIDZN7A.js";
 
 // node_modules/@angular/cdk/fesm2022/coercion.mjs
 function coerceBooleanProperty(value) {
@@ -216,4 +216,4 @@ export {
   Directionality,
   BidiModule
 };
-//# sourceMappingURL=chunk-Y5JTVBJ2.js.map
+//# sourceMappingURL=chunk-QOHMPY26.js.map

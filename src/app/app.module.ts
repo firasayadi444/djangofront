@@ -18,6 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ProfilComponent } from './profil/profil.component'; // Import MatMenuModule
 import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
-    ProfilComponent
+    ProfilComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

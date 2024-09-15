@@ -19,10 +19,12 @@ export class ProfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.loadUserFromLocalStorage();
+
     this.authService.getUser().subscribe(user => {
       if (user) {
         this.profileForm.patchValue({
-          username: user.username,
+          username: user.name,
           email: user.email,
           // Optionally leave the password field blank
         });
@@ -33,7 +35,7 @@ export class ProfilComponent implements OnInit {
     const updatedData = this.profileForm.value;
     // Call the service to update the user data
     this.authService.updateProfile(updatedData).subscribe(response => {
-      // Handle success or error
+    // Handle success or error
     });
   }
 

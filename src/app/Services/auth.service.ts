@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable,BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -40,30 +40,64 @@ export class AuthService {
   
     if (token) {
       try {
-        // Decode the token
+        
+        // Decode the token to extract the ID
         const decodedToken: any = jwtDecode(token);
         console.log('Decoded token:', decodedToken);
+
+        const userId = decodedToken.id; 
+        console.log('userid:', userId);
+
         
-        // Extract user data from the decoded token
-        const user = {
-          username: decodedToken.name,  // Adjust based on your token's structure
-          email: decodedToken.email         // Adjust based on your token's structure
-        };
+        // // Extract user data from the decoded token
+        // const user = {
+        //   username: decodedToken.name,  // Adjust based on your token's structure
+        //   email: decodedToken.email         // Adjust based on your token's structure
+        // };
   
         // Update the BehaviorSubject with the extracted user data
+    //     this.userSubject.next(user);
+    //   } catch (error) {
+    //     console.error('Error decoding token:', error);
+    //     this.userSubject.next(null);
+    //   }
+    // } else {
+    //   this.userSubject.next(null);
+    // Fetch user data using the ID
+    this.getUserById(userId,token).subscribe(
+      user => {
         this.userSubject.next(user);
-      } catch (error) {
-        console.error('Error decoding token:', error);
+        this.storeUserInLocalStorage(user);  // Optional: Store user data in localStorage
+      },
+      error => {
+        console.error('Failed to fetch user data:', error);
         this.userSubject.next(null);
       }
-    } else {
-      this.userSubject.next(null);
-    }
-  }
+    );
 
-  getUser(): Observable<any> {
-    return this.userSubject.asObservable();
-  }
+     } catch (error) {
+      console.error('Error decoding token:', error);
+       this.userSubject.next(null);
+      }
+     } else {
+      this.userSubject.next(null);
+}
+}
+
+// Method to fetch user data by ID
+getUserById(userId: number, token : string): Observable<any> {
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Add the token here
+    })
+  };
+  return this.http.get(`${this.apiUrl}/user/${userId}`,httpOptions);
+}
+
+getUser(): Observable<any> {
+  return this.userSubject.asObservable();
+}
 
   logout(): void {
     localStorage.removeItem('user');
