@@ -45,7 +45,7 @@ export class HomeComponent {
 
   generate() {
     if (this.prompt) {
-      this.generateImage(this.prompt, 512, 512);
+      this.generateImage(this.prompt, 300, 300);
     } else {
       console.error('Prompt is required');
     }
