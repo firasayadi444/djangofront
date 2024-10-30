@@ -23,4 +23,13 @@
   .btn-outline-success {
     border-radius: 0; /* Remove border-radius for a flat look */
   }
-  
+
+
+  .generate {
+    background-color:#e8931c ;
+    text: #ffffff;
+
+    padding-left: 40px;
+    padding-right: 40px;
+    
+}

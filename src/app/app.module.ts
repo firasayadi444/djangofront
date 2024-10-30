@@ -19,6 +19,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ProfilComponent } from './profil/profil.component'; // Import MatMenuModule
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { GenerateComponent } from './generate/generate.component';
+import { MygalleryComponent } from './mygallery/mygallery.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { HomeComponent } from './home/home.component';
     NavbarComponent,
     FooterComponent,
     ProfilComponent,
-    HomeComponent
+    HomeComponent,
+    GenerateComponent,
+    MygalleryComponent
   ],
   imports: [
     BrowserModule,

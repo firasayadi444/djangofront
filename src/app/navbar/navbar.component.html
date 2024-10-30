@@ -10,17 +10,20 @@
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
+                  <a class="nav-link" [routerLink]="['/gallery']">  MyGallery</a>
               </li>
               <li class="nav-item" *ngIf="user">
-                  <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+                  <a class="nav-link" [routerLink]="['/profil']">Profile</a>
               </li>
+              <li class="nav-item">
+                <button class="generate btn btn-primary" [routerLink]="['/generate']"> <b>Generate now!</b></button>
+            </li>
           </ul>
          
           <ul class="navbar-nav ms-auto">
-              <li class="nav-item" *ngIf="user">
+              <!-- <li class="nav-item" *ngIf="user">
                   <span class="nav-link">Welcome {{user.username}},</span>
-              </li>
+              </li> -->
               <li class="nav-item" *ngIf="user">
                   <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
               </li>
