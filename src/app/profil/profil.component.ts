@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../Services/auth.service';
 
@@ -9,6 +9,7 @@ import { AuthService } from '../Services/auth.service';
 })
 export class ProfilComponent implements OnInit {
   profileForm: FormGroup;
+
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.profileForm = this.fb.group({

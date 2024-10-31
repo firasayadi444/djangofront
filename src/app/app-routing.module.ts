@@ -13,6 +13,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profil', component: ProfilComponent },
   { path: 'home', component: HomeComponent }, // Add the HomeComponent route
+
   { path: 'generate', component: GenerateComponent }, // Add the HomeComponent route
   { path: 'gallery', component: MygalleryComponent }, // Add the HomeComponent route
 

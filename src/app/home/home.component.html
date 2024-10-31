@@ -1,0 +1,17 @@
+<div class="flex h-screen bg-white">
+
+    <app-sidebar class="hidden md:block w-46 "></app-sidebar>
+    
+    <section class="py-10 px-8">
+        <div class="container mx-auto mb-10 text-center">
+          <h2 class="text-blue-gray-900 mb-4 text-2xl font-bold">Explore Gallery</h2>
+          <p class="mx-auto w-full px-4 font-normal text-gray-600 lg:w-6/12">
+            Join our web development events designed to share insights, trends,
+            and real-world experiences.
+          </p>
+        </div>
+        <div class="container mx-auto grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-2 xl:grid-cols-4">
+          <app-image-card *ngFor="let image of images" [image]="image"></app-image-card>
+        </div>
+      </section>
+    </div>

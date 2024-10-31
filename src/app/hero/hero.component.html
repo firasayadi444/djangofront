@@ -1,0 +1,73 @@
+<header class="bg-gray-900 mb-96">
+    <div class="container mx-auto px-8 h-[22rem] lg:px-48 translate-y-64">
+      <img
+        width="1024"
+        height="1024"
+        alt="avatar"
+        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+        class="w-40 rounded-xl"
+      />
+      <div class="flex mt-10 justify-between">
+        <h5 class="text-3xl  text-gray-900">{{user.name ? user.name : "Username"}}</h5>
+        <button class="bg-gray-900 text-white px-4 py-2 rounded">Follow</button>
+      </div>
+
+      <p class="text-gray-600 mt-4">
+        A wordsmith who believes in the power of language to shape our world,
+        inspire change, and connect us all. I bring a unique perspective to the
+        writing, blending the knowledge and experiences into thought-provoking
+        narratives.
+      </p>
+      <button class="flex items-center gap-2 mt-2 text-black">
+        More about me
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="3"
+          stroke="currentColor"
+          class="h-3.5 w-3.5 text-gray-900"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </header>
+  
+  <section class=" px-8">
+    <div class="container mx-auto mb-12">
+      <h3 class="text-3xl text-blue-gray-700">Check my images posts</h3>
+    </div>
+    <div class="container mx-auto grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+      <div *ngFor="let image of Images" class="bg-white shadow-lg rounded-lg overflow-hidden">
+        <img src="https://demos.creative-tim.com/nextjs-tailwind-author-page/image/blogs/blog-3.png" [alt]="image.prompt" class="w-full h-48 object-cover">
+        <div class="p-4">
+          <!-- <h5 class="text-xl font-bold mb-2">{{ image.prompt }}</h5> -->
+          <p class="text-gray-900 mb-4">{{ image.prompt }}</p>
+        </div>
+      </div>
+  
+      <div class="relative grid h-full w-full place-items-center overflow-hidden bg-black rounded-lg">
+        <div class="absolute inset-0 h-full w-full bg-gray-900/75"></div>
+        <div class="relative w-full p-8 text-center text-white">
+          <h3 class="text-3xl mt-4">Discover all my images</h3>
+          <p class="py-4 font-normal">
+            I am a versatile artist who explores a wide range of genres and topics.
+          </p>
+          <button class="flex items-center gap-2 text-white">
+            read more
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="h-3.5 w-3.5 text-white"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  
