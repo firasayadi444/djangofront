@@ -23,6 +23,8 @@
         <a routerLink="/register" *ngIf="!user">
           <button class="bg-yellow-700 text-white px-4 py-2 rounded" >Sign up</button>
         </a>
+        <button *ngIf="user" (click)="logout()" class="text-white mr-2 text-red-600"  >Logout</button>
+
       </div>
       <button
         (click)="toggleOpen()"
