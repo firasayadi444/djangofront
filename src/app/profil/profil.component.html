@@ -1,49 +1,47 @@
-<app-hero [user]="profileForm.value"></app-hero>
 <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
-    <div class="container rounded bg-white mt-5 mb-5">
-      <div class="row">
-        <!-- User Profile Section -->
-        <div class="col-md-3 border-right">
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-            <span class="font-weight-bold">{{ profileForm.value.username || 'User' }}</span>
-            <span class="text-black-50">{{ profileForm.value.email || 'email@example.com' }}</span>
+  <div class="flex justify-center items-center rounded bg-white mt-5 mb-5 p-6">
+    <div class="flex flex-col md:flex-row">
+      <!-- User Profile Section -->
+      <div class="md:w-1/4 border-r border-gray-200">
+        <div class="flex flex-col items-center text-center p-5">
+          <img class="rounded-full mt-5 w-36 h-36 object-cover" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+          <span class="font-semibold text-lg mt-3">{{ profileForm.value.username || 'User' }}</span>
+          <span class="text-gray-500">{{ profileForm.value.email || 'email@example.com' }}</span>
+        </div>
+      </div>
+      
+      <!-- Profile Settings Form -->
+      <div class="md:w-3/4 p-5">
+        <div class="flex justify-between items-center mb-6">
+          <h4 class="text-xl font-semibold">Profile</h4>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Name Field -->
+          <div>
+            <label class="block text-gray-700">Name</label>
+            <input type="text" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Enter name" formControlName="username">
+          </div>
+          
+          <!-- Email Field -->
+          <div>
+            <label class="block text-gray-700">Email</label>
+            <input type="email" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Enter email" formControlName="email">
           </div>
         </div>
-<!--         test -->
-        <!-- Profile Settings Form -->
-        <div class="col-md-9">
-          <div class="p-3 py-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="text-right">Profile</h4>
-            </div>
-            <div class="row mt-2">
-              <!-- Name Field -->
-              <div class="col-md-6">
-                <label class="labels">Name</label>
-                <input type="text" class="form-control" placeholder="Enter name" formControlName="username">
-              </div>
-              <!-- Email Field -->
-              <div class="col-md-6">
-                <label class="labels">Email</label>
-                <input type="email" class="form-control" placeholder="Enter email" formControlName="email">
-              </div>
-            </div>
-            <div class="row mt-3">
-              <!-- Password Field -->
-              <div class="col-md-12">
-                <label class="labels">Password</label>
-                <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
-              </div>
-            </div>
-
-            <!-- Buttons for Update and Delete -->
-            <div class="mt-5 text-center">
-              <button class="btn btn-primary profile-button" type="submit">Update Profile</button>
-              <button class="btn btn-danger profile-button" (click)="deleteProfile()">Delete Profile</button>
-            </div>
-          </div>
+        
+        <div class="mt-4">
+          <!-- Password Field -->
+          <label class="block text-gray-700">Password</label>
+          <input type="password" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Enter password" formControlName="password">
+        </div>
+        
+        <!-- Buttons for Update and Delete -->
+        <div class="mt-6 text-center space-x-4">
+          <button class="bg-blue-500 text-white rounded px-4 py-2" type="submit">Update Profile</button>
+          <button class="bg-red-500 text-white rounded px-4 py-2" (click)="deleteProfile()">Delete Profile</button>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>
