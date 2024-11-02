@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -33,7 +32,7 @@ import { HeroComponent } from './hero/hero.component';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent,
+    
     FooterComponent,
     ProfilComponent,
     HomeComponent,

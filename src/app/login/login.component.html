@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="screen">
     <div class="screen__content">
       <form class="login" (ngSubmit)="onSubmit()">
@@ -27,4 +27,77 @@
       <span class="screen__background__shape screen__background__shape1"></span>
     </div>        
   </div>
-</div>
+</div> -->
+
+<section class="!m-8 flex flex-col lg:flex-row gap-4">
+  <div class="w-full lg:w-3/5 !mt-24">
+    <div class="text-center">
+      <h2 class="text-2xl font-bold !mb-4">Sign In</h2>
+      <p class="text-lg font-normal text-gray-600">
+        Enter your email and password to Sign In.
+      </p>
+    </div>
+    <form
+      class="!mt-8 !mb-2 !mx-auto w-80 max-w-screen-lg lg:w-1/2"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="!mb-1 flex flex-col gap-6">
+        <label class="text-gray-600 font-medium">Your email</label>
+        <input
+          type="email"
+          [(ngModel)]="username"
+          formControlName="email"
+          placeholder="name@mail.com"
+          class="!p-2 border border-gray-400 rounded-lg  focus:border-gray-900 transition duration-200"
+        />
+
+        <label class="text-gray-600 font-medium">Password</label>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          formControlName="password"
+          placeholder="********"
+          class="!p-2 border border-gray-400 rounded-lg   focus:border-gray-900 transition duration-200"
+        />
+      </div>
+
+      <div class="flex items-center !mt-4">
+        <input
+          type="checkbox"
+          formControlName="termsAccepted"
+          class="!mr-2" 
+        />
+        <label class="text-gray-600">
+          I agree to the
+          <a href="#" class="text-blue-500 underline">Terms and Conditions</a>
+        </label>
+      </div>
+
+      <button
+        class="!mt-6 w-full  text-white !p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition duration-200"
+        type="submit"
+      >
+        Sign In
+      </button>
+
+      <div class="flex items-center justify-between gap-2 !mt-6">
+        <!-- <input
+          type="checkbox"
+          formControlName="subscribeToNewsletter"
+          class="mr-2"
+        /> -->
+        <!-- <label class="text-gray-600">Subscribe me to newsletter</label> -->
+        <a href="#" class="font-medium text-blue-500 !mx-auto">Forgot Password</a>
+      </div>
+
+      <p class="text-center text-gray-500 font-medium !mt-4">
+        Not registered?
+        <a routerLink="/register" class="text-blue-500 !ml-1">Create account</a>
+      </p>
+    </form>
+  </div>
+
+  <div class="w-full lg:w-2/5 h-full hidden lg:block">
+    <img src="/pattern.png" class="h-full w-full object-cover rounded-3xl" />
+  </div>
+</section>

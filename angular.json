@@ -38,6 +38,10 @@
             ],
             "styles": [
               "node_modules/@angular/material/prebuilt-themes/azure-blue.css",
+<<<<<<< HEAD
+=======
+              
+>>>>>>> 4276ffcbd0635a9207d7a0aecc8ba612fd2ff1d7
               "src/styles.css"
             ],
             "scripts": []
