@@ -20,10 +20,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { GenerateComponent } from './generate/generate.component';
 import { MygalleryComponent } from './mygallery/mygallery.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { ImageCardComponent } from './image-card/image-card.component';
 import { NavbarNewComponent } from './navbar-new/navbar-new.component';
 import { HeroComponent } from './hero/hero.component';
+import { EditimageComponent } from './editimage/editimage.component';
 // import { Typography, Card, CardBody, CardHeader, Button } from "@material-tailwind/html";
 
 
@@ -38,10 +38,10 @@ import { HeroComponent } from './hero/hero.component';
     HomeComponent,
     GenerateComponent,
     MygalleryComponent,
-    SidebarComponent,
     ImageCardComponent,
     NavbarNewComponent,
-    HeroComponent
+    HeroComponent,
+    EditimageComponent,
   ],
   imports: [
     BrowserModule,

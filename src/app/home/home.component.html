@@ -1,14 +1,61 @@
-
+<section class="py-10 px-8">
+  <div class="container mx-auto mb-10 text-center">
+    <h2 class="text-blue-gray-900 mb-4 text-2xl font-bold">Explore Gallery</h2>
     
-    <section class="py-10 px-8">
-        <div class="container mx-auto mb-10 text-center">
-          <h2 class="text-blue-gray-900 mb-4 text-2xl font-bold">Explore Gallery</h2>
-          <p class=" w-full px-4 font-normal text-gray-600 lg:w-6/12">
-            Join our web development events designed to share insights, trends,
-            and real-world experiences.
-          </p>
+<form class="flex items-center max-w-lg mx-auto">   
+  <label for="voice-search" class="sr-only">Search</label>
+  <div class="relative w-full">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 21 21">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.15 5.6h.01m3.337 1.913h.01m-6.979 0h.01M5.541 11h.01M15 15h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 2.043 11.89 9.1 9.1 0 0 0 7.2 19.1a8.62 8.62 0 0 0 3.769.9A2.013 2.013 0 0 0 13 18v-.857A2.034 2.034 0 0 1 15 15Z"/>
+          </svg>
+      </div>
+      <input type="text" id="voice-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos, Design Templates..." required />
+      <button type="button" class="absolute inset-y-0 end-0 flex items-center pe-3">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7v3a5.006 5.006 0 0 1-5 5H6a5.006 5.006 0 0 1-5-5V7m7 9v3m-3 0h6M7 1h2a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V4a3 3 0 0 1 3-3Z"/>
+          </svg>
+      </button>
+  </div>
+  <button type="submit" class="inline-flex items-center py-2.5 px-3 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+      <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+      </svg>Search
+  </button>
+</form>
+
+  </div>
+
+  <div class="container mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+    <!-- Loop through the images and display each one with styling -->
+    <div *ngFor="let image of images" class="bg-white rounded-lg shadow-md overflow-hidden">
+      <img [src]="image.image_url" alt="{{ image.prompt }}" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ image.prompt }}</h3>
+        <p class="text-gray-500 text-sm">Created at: {{ image.created_at | date:'short' }}</p>
+        
+        <!-- Heart icon for like button and like count -->
+        <div class="flex items-center mt-4">
+          <button 
+           
+            class="text-gray-500 hover:text-red-500 focus:outline-none"
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              class="h-6 w-6" 
+              fill="currentColor" 
+              [class.text-red-500]="image.liked" 
+              viewBox="0 0 24 24"
+              stroke="none"
+            >
+              <path 
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              />
+            </svg>
+          </button>
+          <span class="ml-2 text-sm text-gray-600">11 likes</span>
         </div>
-        <div class="container mx-auto grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-2 xl:grid-cols-4">
-          <app-image-card *ngFor="let image of images" [image]="image"></app-image-card>
-        </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>

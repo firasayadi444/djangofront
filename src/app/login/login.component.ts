@@ -13,22 +13,18 @@ import { AuthService } from '../Services/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  termsAccepted: boolean = false; // Add this property
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
     this.authService.login(this.username, this.password).subscribe(
       response => {
-       //Store the token in localStorage
-        localStorage.setItem('token', response.jwt); 
-        console.log(response);
-        //Load the user from the token to update userSubject
+        localStorage.setItem('token', response.jwt);
         this.authService.loadUserFromLocalStorage();
-        this.router.navigate(['/profil']); 
-        //Redirect after login
+        this.router.navigate(['/profil']);
       },
       error => {
-        // Handle error
         console.error('Login failed', error);
       }
     );

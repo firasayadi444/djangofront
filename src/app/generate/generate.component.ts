@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ImServiceService } from '../Services/im-service.service';
 import { AuthService } from '../Services/auth.service';
+import { Router } from '@angular/router';
 
 
 
@@ -16,7 +17,8 @@ export class GenerateComponent {
   Gen_butt: boolean = true; // Initially show the button
   isLoading: boolean = false; // Add a property to handle loading state
 
-  constructor(private imageService: ImServiceService, private authService: AuthService) {}
+  constructor(private imageService: ImServiceService, private authService: AuthService  , private router: Router  // Inject Router
+  ) {}
 
   generateImage(prompt: string, width: number, height: number) {
     console.log("image gen meth");
@@ -106,6 +108,8 @@ export class GenerateComponent {
             response => {
               console.log('Image saved successfully:', response);
               this.Status = 'Image saved successfully!';
+              this.router.navigate(['/gallery']);
+
             },
             error => {
               console.error('Error saving image:', error);

@@ -1,34 +1,3 @@
-<!-- <div class="container">
-  <div class="screen">
-    <div class="screen__content">
-      <form class="login" (ngSubmit)="onSubmit()">
-        <div class="login__field">
-          <i class="login__icon fas fa-user"></i>
-          <input type="text" class="login__input" placeholder="User name / Email" [(ngModel)]="username" name="username" required>
-        </div>
-        <div class="login__field">
-          <i class="login__icon fas fa-lock"></i>
-          <input type="password" class="login__input" placeholder="Password" [(ngModel)]="password" name="password" required>
-        </div>
-        <button class="button login__submit" type="submit">
-          <span class="button__text">Log In Now</span>
-          <i class="button__icon fas fa-chevron-right"></i>
-        </button>
-        <div class="social-login">
-          <h3 style="width: min-content;">Don't have an account?</h3>
-          <button (click)="navigateToRegister()" class="button register-link">Register Now</button>
-        </div>
-      </form>
-    </div>
-    <div class="screen__background">
-      <span class="screen__background__shape screen__background__shape4"></span>
-      <span class="screen__background__shape screen__background__shape3"></span>        
-      <span class="screen__background__shape screen__background__shape2"></span>
-      <span class="screen__background__shape screen__background__shape1"></span>
-    </div>        
-  </div>
-</div> -->
-
 <section class="!m-8 flex flex-col lg:flex-row gap-4">
   <div class="w-full lg:w-3/5 !mt-24">
     <div class="text-center">
@@ -40,32 +9,36 @@
     <form
       class="!mt-8 !mb-2 !mx-auto w-80 max-w-screen-lg lg:w-1/2"
       (ngSubmit)="onSubmit()"
+      #loginForm="ngForm"
     >
       <div class="!mb-1 flex flex-col gap-6">
         <label class="text-gray-600 font-medium">Your email</label>
         <input
           type="email"
           [(ngModel)]="username"
-          formControlName="email"
+          name="username"  
+          required
           placeholder="name@mail.com"
-          class="!p-2 border border-gray-400 rounded-lg  focus:border-gray-900 transition duration-200"
+          class="!p-2 border border-gray-400 rounded-lg focus:border-gray-900 transition duration-200"
         />
 
         <label class="text-gray-600 font-medium">Password</label>
         <input
           type="password"
           [(ngModel)]="password"
-          formControlName="password"
+          name="password"  
+          required
           placeholder="********"
-          class="!p-2 border border-gray-400 rounded-lg   focus:border-gray-900 transition duration-200"
+          class="!p-2 border border-gray-400 rounded-lg focus:border-gray-900 transition duration-200"
         />
       </div>
 
       <div class="flex items-center !mt-4">
         <input
           type="checkbox"
-          formControlName="termsAccepted"
-          class="!mr-2" 
+          [(ngModel)]="termsAccepted" 
+          name="termsAccepted"
+          class="!mr-2"
         />
         <label class="text-gray-600">
           I agree to the
@@ -74,30 +47,24 @@
       </div>
 
       <button
-        class="!mt-6 w-full  text-white !p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition duration-200"
+        class="!mt-6 w-full text-white !p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition duration-200"
         type="submit"
-      >
-        Sign In
-      </button>
+        [disabled]="!loginForm.form.valid" 
+        Sign In>Sign In</button>
+      
 
       <div class="flex items-center justify-between gap-2 !mt-6">
-        <!-- <input
-          type="checkbox"
-          formControlName="subscribeToNewsletter"
-          class="mr-2"
-        /> -->
-        <!-- <label class="text-gray-600">Subscribe me to newsletter</label> -->
         <a href="#" class="font-medium text-blue-500 !mx-auto">Forgot Password</a>
       </div>
 
       <p class="text-center text-gray-500 font-medium !mt-4">
         Not registered?
-        <a routerLink="/register" class="text-blue-500 !ml-1">Create account</a>
+        <a (click)="navigateToRegister()" class="text-blue-500 !ml-1">Create account</a>
       </p>
     </form>
   </div>
 
   <div class="w-full lg:w-2/5 h-full hidden lg:block">
-    <img src="/pattern.png" class="h-full w-full object-cover rounded-3xl" />
+    <img src="/medium.webp" class="h-full w-full object-cover rounded-3xl" />
   </div>
 </section>
