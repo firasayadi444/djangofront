@@ -26,12 +26,34 @@ export class AuthService {
   private storeUserInLocalStorage(user: any): void {
     localStorage.setItem('user', JSON.stringify(user));
   }
-  updateProfile(data: any): Observable<any> {
-    return this.http.put('/api/user', data); // Replace with your API endpoint
+  updateProfile(userId: any,data: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (token) {
+        // Decode the token to extract the ID
+        const decodedToken: any = jwtDecode(token);
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // Add the token here
+      })
+    };
+    return this.http.patch(`${this.apiUrl}/user/${userId}`, data, httpOptions); // Replace with your API endpoint
   }
 
-  deleteProfile(): Observable<any> {
-    return this.http.delete('/api/user'); // Replace with your API endpoint
+  deleteProfile(userId:any): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (token) {
+        // Decode the token to extract the ID
+        const decodedToken: any = jwtDecode(token);
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // Add the token here
+      })
+    };
+    return this.http.delete(`${this.apiUrl}/user/${userId}`, httpOptions); // Replace with your API endpoint
   }
 
   public loadUserFromLocalStorage(): void {

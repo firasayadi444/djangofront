@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../Services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -11,7 +12,7 @@ export class ProfilComponent implements OnInit {
   profileForm: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
     this.profileForm = this.fb.group({
       username: [''],
       email: [''],
@@ -24,6 +25,7 @@ export class ProfilComponent implements OnInit {
 
     this.authService.getUser().subscribe(user => {
       if (user) {
+        console.log(user)
         this.profileForm.patchValue({
           username: user.name,
           email: user.email,
@@ -35,16 +37,29 @@ export class ProfilComponent implements OnInit {
   updateProfile(): void {
     const updatedData = this.profileForm.value;
     // Call the service to update the user data
-    this.authService.updateProfile(updatedData).subscribe(response => {
-    // Handle success or error
+    this.authService.getUser().subscribe(user => {
+      this.authService.updateProfile(user.id,updatedData).subscribe(response => {
+        console.log("Account updated:", response);
+        // Handle the account deletion logic, e.g., redirecting or showing a confirmation
+    }, error => {
+        console.error("Error updating account:", error);
+        // Handle error cases, e.g., display a message
+    });
     });
   }
 
   deleteProfile(): void {
     // Call the service to delete the user account
-    this.authService.deleteProfile().subscribe(response => {
-      // Handle account deletion
-    });
+    this.authService.getUser().subscribe(user => {
+      this.authService.deleteProfile(user.id).subscribe(response => {
+        console.log("Account deleted:", response);
+        this.router.navigate(['/login']);
+    // Handle the account deletion logic, e.g., redirecting or showing a confirmation
+}, error => {
+    console.error("Error deleting account:", error);
+    // Handle error cases, e.g., display a message
+});
+  })
   }
 
 }
