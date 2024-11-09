@@ -14,7 +14,7 @@ export class ProfilComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService,private router: Router) {
     this.profileForm = this.fb.group({
-      username: [''],
+      name: [''],
       email: [''],
       password: ['']
     });
@@ -27,7 +27,7 @@ export class ProfilComponent implements OnInit {
       if (user) {
         console.log(user)
         this.profileForm.patchValue({
-          username: user.name,
+          name: user.name,
           email: user.email,
           // Optionally leave the password field blank
         });

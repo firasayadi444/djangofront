@@ -5,7 +5,7 @@
       <div class="md:w-1/4 border-r border-gray-200">
         <div class="flex flex-col items-center text-center p-5">
           <img class="rounded-full mt-5 w-36 h-36 object-cover" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
-          <span class="font-semibold text-lg mt-3">{{ profileForm.value.username || 'User' }}</span>
+          <span class="font-semibold text-lg mt-3">{{ profileForm.value.name || 'User' }}</span>
           <span class="text-gray-500">{{ profileForm.value.email || 'email@example.com' }}</span>
         </div>
       </div>
@@ -20,7 +20,7 @@
           <!-- Name Field -->
           <div>
             <label class="block text-gray-700">Name</label>
-            <input type="text" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Enter name" formControlName="username">
+            <input type="text" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Enter name" formControlName="name">
           </div>
           
           <!-- Email Field -->
