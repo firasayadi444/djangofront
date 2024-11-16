@@ -24,6 +24,7 @@ import { ImageCardComponent } from './image-card/image-card.component';
 import { NavbarNewComponent } from './navbar-new/navbar-new.component';
 import { HeroComponent } from './hero/hero.component';
 import { EditimageComponent } from './editimage/editimage.component';
+import { CardHomeComponent } from './card-home/card-home.component';
 // import { Typography, Card, CardBody, CardHeader, Button } from "@material-tailwind/html";
 
 
@@ -42,6 +43,7 @@ import { EditimageComponent } from './editimage/editimage.component';
     NavbarNewComponent,
     HeroComponent,
     EditimageComponent,
+    CardHomeComponent,
   ],
   imports: [
     BrowserModule,

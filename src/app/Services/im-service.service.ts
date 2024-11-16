@@ -31,5 +31,11 @@ export class ImServiceService {
   GetImage(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/visible-images`);
   }
+  share(imageId: string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/share-image/${imageId}/`, {visibility:true});
+  }
+  deleteImage(imageId: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/delete-image/${imageId}/`);
+  }
 
 }

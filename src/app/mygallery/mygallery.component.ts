@@ -23,6 +23,7 @@ export class MygalleryComponent {
         this.imService.getMyImage(userId).subscribe({
           next: (response: any) => {
             this.gallery = response; // Update gallery with response data
+            console.log(response)
           },
           error: (error: any) => {
             console.error('Error fetching images:', error);
@@ -67,9 +68,36 @@ export class MygalleryComponent {
     this.imService.updateImage(image.id, { visibility: true }).subscribe({
       next: (response: any) => {
         console.log('Image visibility set to true', response);
+
       },
       error: (error: any) => {
         console.error('Error sharing image:', error);
+      }
+    });
+  }
+
+  unshareImage(image: any) {
+    image.visibility = false; 
+    this.imService.updateImage(image.id, { visibility: false }).subscribe({
+      next: (response: any) => {
+        console.log('Image visibility set to true', response);
+      },
+      error: (error: any) => {
+        console.error('Error sharing image:', error);
+      }
+    });
+  }
+
+  deleteImage(image: any) {
+    this.imService.deleteImage(image.id).subscribe({
+      next: (response: any) => {
+        this.gallery = this.gallery.filter((img: any) => img.id !== image.id);
+        console.log('Image deleted', response);
+        console.log(response);
+
+      },
+      error: (error: any) => {
+        console.error('Error deleting image:', error);
       }
     });
   }
