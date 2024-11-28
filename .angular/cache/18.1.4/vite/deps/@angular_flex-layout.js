@@ -1,12 +1,12 @@
 import {
-  DomSanitizer
-} from "./chunk-IA7JVMS6.js";
-import "./chunk-O4SVXBKB.js";
-import {
   BidiModule,
   Directionality,
   coerceBooleanProperty
 } from "./chunk-QOHMPY26.js";
+import {
+  DomSanitizer
+} from "./chunk-IA7JVMS6.js";
+import "./chunk-O4SVXBKB.js";
 import {
   DOCUMENT,
   NgClass,

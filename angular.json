@@ -37,7 +37,6 @@
               }
             ],
             "styles": [
-             
               "src/styles.css"
             ],
             "scripts": []
@@ -52,8 +51,13 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "10kb",
+                  "maximumError": "12kb"
                 }
               ],
               "outputHashing": "all"
@@ -95,9 +99,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              
-            ],
+            "styles": [],
             "scripts": []
           }
         }
