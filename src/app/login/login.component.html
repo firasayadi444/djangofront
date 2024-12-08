@@ -3,9 +3,14 @@
     <div class="text-center">
       <h2 class="text-2xl font-bold !mb-4">Sign In</h2>
       <p class="text-lg font-normal text-gray-600">
-        Enter your email and password to Sign In.
+        Enter your email and password to Sign In !
       </p>
     </div>
+
+    <div *ngIf="errorMessage" class="error-message bg-red-100 text-red-700 border border-red-400 rounded-lg p-4 mb-4">
+      {{ errorMessage }}
+    </div>
+
     <form
       class="!mt-8 !mb-2 !mx-auto w-80 max-w-screen-lg lg:w-1/2"
       (ngSubmit)="onSubmit()"
@@ -16,7 +21,7 @@
         <input
           type="email"
           [(ngModel)]="username"
-          name="username"  
+          name="username"
           required
           placeholder="name@mail.com"
           class="!p-2 border border-gray-400 rounded-lg focus:border-gray-900 transition duration-200"
@@ -26,7 +31,7 @@
         <input
           type="password"
           [(ngModel)]="password"
-          name="password"  
+          name="password"
           required
           placeholder="********"
           class="!p-2 border border-gray-400 rounded-lg focus:border-gray-900 transition duration-200"
@@ -36,7 +41,7 @@
       <div class="flex items-center !mt-4">
         <input
           type="checkbox"
-          [(ngModel)]="termsAccepted" 
+          [(ngModel)]="termsAccepted"
           name="termsAccepted"
           class="!mr-2"
         />
@@ -49,9 +54,10 @@
       <button
         class="!mt-6 w-full text-white !p-2 bg-gray-900 rounded-lg hover:bg-blue-600 transition duration-200"
         type="submit"
-        [disabled]="!loginForm.form.valid" 
-        Sign In>Sign In</button>
-      
+        [disabled]="!loginForm.form.valid"
+      >
+        Sign In
+      </button>
 
       <div class="flex items-center justify-between gap-2 !mt-6">
         <a href="#" class="font-medium text-blue-500 !mx-auto">Forgot Password</a>

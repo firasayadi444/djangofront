@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ImServiceService } from '../Services/im-service.service';
 import { AuthService } from '../Services/auth.service';
 import { Router } from '@angular/router';
@@ -10,15 +10,55 @@ import { Router } from '@angular/router';
   templateUrl: './generate.component.html',
   styleUrl: './generate.component.css'
 })
-export class GenerateComponent {
+export class GenerateComponent implements OnInit{
   imageUrl!: string;
   prompt: string = ''; // Initialize prompt as an empty string
   Status: string = '';
   Gen_butt: boolean = true; // Initially show the button
   isLoading: boolean = false; // Add a property to handle loading state
+  prompts :[] =[];
+  lastPrompt!:string;
+  
 
   constructor(private imageService: ImServiceService, private authService: AuthService  , private router: Router  // Inject Router
   ) {}
+  ngOnInit(): void {
+    
+    this.getRandomPrompts()
+  }
+
+  selectPrompt(p:any) {
+    this.prompt=p;
+    this.generate()
+  }
+
+  // getLastPrompt() {
+  //   this.imageService.getlastprompt().subscribe(
+  //     response => {
+  //       console.log(response)
+  //       this.lastPrompt=response.last_prompt;
+  //     },
+  //     error => {
+  //       this.lastPrompt = "random"
+  //       console.error('Error getting last prompt:', error);
+  //     }
+  //   )
+  // }
+
+  getRandomPrompts() {
+    
+    this.imageService.getRandomPrompts(this.lastPrompt).subscribe(
+      response => {
+        console.log(response)
+        this.prompts=response.random_prompts
+        console.log(this.prompts)
+      },
+      error => {
+        this.prompts=error.random_prompts
+        console.error('Error getting last prompt:', error);
+      }
+    )
+  }
 
   generateImage(prompt: string, width: number, height: number) {
     console.log("image gen meth");

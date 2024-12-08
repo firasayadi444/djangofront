@@ -11,9 +11,9 @@ export class NavbarNewComponent {
 
   open = false;
   navMenu = [
-    {name:'Home', path: '/home'},
+    {name:'Home', path: '/'},
     {name:'AI Image Generator', path: '/generate'},
-    {name:'AI Upscaler', path: '/home'},
+    {name:'AI Upscaler', path: '/'},
     {name:'Profile', path: '/profil'},
     {name:'Gallery', path: '/gallery'}
 

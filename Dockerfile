@@ -32,7 +32,7 @@ RUN npm run build -- --project=auth --configuration=production
 FROM httpd:alpine
 
 # Copy the built Angular app from the build stage to the Apache public directory
-COPY --from=build /app/dist/auth/ /usr/local/apache2/htdocs/
+COPY --from=build /app/dist/auth/browser /usr/local/apache2/htdocs/
 
 # Expose port 80 to be able to access the app
 EXPOSE 80

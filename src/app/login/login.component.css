@@ -202,3 +202,15 @@ body {
 .social-login__icon:hover {
 	transform: scale(1.5);	
 }
+.error-message {
+	animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+	from {
+	  opacity: 0;
+	}
+	to {
+	  opacity: 1;
+	}
+  }

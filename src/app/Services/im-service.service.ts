@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class ImServiceService {
   private saveApiUrl='http://localhost:8000/api/images/save-image';
   private baseUrl='http://localhost:8000/api/images';
   private updateUrl='http://localhost:8000/api/images/images-update';
+
+  private promptUrl = 'http://localhost:8000/api/mlpredict'
 
   
   constructor(private http: HttpClient) { }
@@ -37,5 +40,37 @@ export class ImServiceService {
   deleteImage(imageId: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/delete-image/${imageId}/`);
   }
+
+  getRandomPrompts(payload:any): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (token) {
+        // Decode the token to extract the ID
+        const decodedToken: any = jwtDecode(token);
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // Add the token here
+      })
+    };
+    return this.http.post<any>(`${this.promptUrl}/predict`, payload,httpOptions);
+  }
+
+  getlastprompt(): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (token) {
+        // Decode the token to extract the ID
+        const decodedToken: any = jwtDecode(token);
+    }
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // Add the token here
+      })
+    };
+    return this.http.get<any>(`${this.promptUrl}/lastprompt`, httpOptions);
+  }
+
+  
 
 }

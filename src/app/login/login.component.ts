@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { AuthService } from '../Services/auth.service';
 
 @Component({
@@ -13,7 +10,8 @@ import { AuthService } from '../Services/auth.service';
 export class LoginComponent {
   username: string = '';
   password: string = '';
-  termsAccepted: boolean = false; // Add this property
+  termsAccepted: boolean = false;
+  errorMessage: string = ''; // Add this property for error messages
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -26,6 +24,12 @@ export class LoginComponent {
       },
       error => {
         console.error('Login failed', error);
+        // Display a specific error message based on the backend response
+        if (error.status === 403 && error.error.detail) {
+          this.errorMessage = error.error.detail;
+        } else {
+          this.errorMessage = 'Login failed. Please check your credentials and try again.';
+        }
       }
     );
   }
